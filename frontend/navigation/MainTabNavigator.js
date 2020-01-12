@@ -60,7 +60,7 @@ const LinksStack = createStackNavigator(
 );
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+  tabBarLabel: 'Camera',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
   ),
@@ -76,7 +76,7 @@ const DictionaryStack = createStackNavigator(
 );
 
 DictionaryStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+  tabBarLabel: 'Dictionary',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   ),
