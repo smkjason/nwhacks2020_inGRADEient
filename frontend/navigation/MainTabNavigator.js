@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
 import ResultsScreen from '../screens/ResultsScreen/ResultsScreen';
+// import HistoryScreen from '../screens/HistoryScreen/HistoryScreen';
 import CameraScreen from '../screens/CameraScreen/CameraScreen';
 import DictionaryScreen from '../screens/DictionaryScreen/DictionaryScreen';
 
@@ -19,6 +20,22 @@ const ResultsStack = createStackNavigator(
   },
   config
 );
+
+// HistoryStack.navigationOptions = {
+//   tabBarLabel: 'History', // this is for the nav bar at the bottom
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={
+//         Platform.OS === 'ios'
+//           ? `ios-information-circle${focused ? '' : '-outline'}`
+//           : 'md-information-circle'
+//       }
+//     />
+//   ),
+// };
+
+// HistoryStack.path = '';
 
 ResultsStack.navigationOptions = {
   tabBarLabel: 'Results', // this is for the nav bar at the bottom
@@ -44,7 +61,7 @@ const LinksStack = createStackNavigator(
 );
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+  tabBarLabel: 'Camera',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
   ),
@@ -60,7 +77,7 @@ const DictionaryStack = createStackNavigator(
 );
 
 DictionaryStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+  tabBarLabel: 'Dictionary',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   ),

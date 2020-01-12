@@ -9,7 +9,7 @@ export default class ScoreDisplay extends Component {
 
     render() {
         // set levels and score
-        let score = this.props.score;
+        let score = Math.min(this.props.score, 8);
         let percentage = Math.ceil(score / 8 * 100);
         let level = "";
         let levelStyle = [styles.score];

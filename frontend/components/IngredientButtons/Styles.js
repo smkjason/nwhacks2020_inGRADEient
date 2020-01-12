@@ -21,11 +21,6 @@ export default StyleSheet.create({
         borderColor: '#ff3b3b',
     },
 
-    goodIngredientButton: {
-        backgroundColor: '#c2fab1',
-        borderColor: '#66eb3d',
-    },
-
     ingredientButtonText: {
         fontSize: 14,
         fontWeight: '600',
