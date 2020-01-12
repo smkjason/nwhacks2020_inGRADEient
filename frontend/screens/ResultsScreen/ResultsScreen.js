@@ -6,69 +6,20 @@ import IngredientButtons from '../../components/IngredientButtons/IngredientButt
 
 // sample data
 const results = {
-    "score": 1,
-    "ingredients": {
-        "good": [
-            "water",
-            "gooding1",
-            "gooding2",
-            "water",
-            "gooding1",
-            "gooding2",
-            "water",
-            "gooding1",
-            "gooding2",
-            "water",
-            "gooding1",
-            "gooding2"
-        ],
-        "bad": {
-            "sodium_sulfate": {
-                "desc": "asdf"
-            },
-            "bading1": {
-                "desc": "asdfasdf"
-            },
-            "bading2": {
-                "desc": "asdfasdfasdf"
-            },
-            "bading3": {
-                "desc": "asdfasdfasdf"
-            },
-            "bading4": {
-                "desc": "asdfasdfasdf"
-            },
-            "bading5": {
-                "desc": "asdfasdfasdf"
-            },
-            "bading6": {
-                "desc": "asdfasdfasdf"
-            },
-            "bading7": {
-                "desc": "asdfasdfasdf"
-            },
-            "bading8": {
-                "desc": "asdfasdfasdf"
-            },
-        },
-        "unknown": [
-            "unk1",
-            "unknwn2",
-            "unknown3",
-            "unknownunknown4",
-            "unknown5",
-            "unk1",
-            "unknwn2",
-            "unknown3",
-            "unknownunknown4",
-            "unknown5",
-            "unk1",
-            "unknwn2",
-            "unknown3",
-            "unknownunknown4",
-            "unknown5",
-        ]
-    }
+    "bad": [
+        "bad1",
+        "bad2",
+        "bad_three",
+    ],
+    "rest": [
+        "rest1",
+        "good",
+        "ok_ayyy",
+        "rest1",
+        "good",
+        "ok_ayyy",
+        "testingggg"
+    ],
 }
 
 export default class ResultsScreen extends Component {
@@ -77,27 +28,21 @@ export default class ResultsScreen extends Component {
             <View style={styles.wrapper}>
                 <View style={styles.resultsHeader}>
                     <Text style={styles.resultsHeaderTitle}>Product Analysis</Text>
-                    <ScoreDisplay score={results.score}/>
+                    <ScoreDisplay score={results.bad.length}/>
                 </View>
                 <Text style={styles.explanation}>This product contains
-                    <Text style={styles.explanationNumber}> { Object.keys(results.ingredients.bad).length } </Text>
+                    <Text style={styles.explanationNumber}> {results.bad.length} </Text>
                 items from our list of bad ingredients.</Text>
                 <ScrollView>
                     <View style={styles.category}>
                         <Text style={styles.categoryHeader}>Bad Ingredients</Text>
                         <View style={styles.categoryWrapper}>
-                        <IngredientButtons type="bad" labels={results.ingredients.bad}/>
+                        <IngredientButtons type="bad" labels={results.bad}/>
                         </View>
                     </View>
                     <View style={styles.category}>
-                        <Text style={styles.categoryHeader}>Okay Ingredients</Text>
-                        <IngredientButtons type="good" labels={results.ingredients.good}/>
-                    </View>
-                    <View style={styles.category}>
-                        <Text style={styles.categoryHeader}>Unknown Ingredients</Text>
-                        <View style={styles.categoryWrapper}>
-                        <IngredientButtons type="unknown" labels={results.ingredients.unknown}/>
-                        </View>
+                        <Text style={styles.categoryHeader}>Other Ingredients</Text>
+                        <IngredientButtons type="rest" labels={results.rest}/>
                     </View>
                 </ScrollView>
             </View>

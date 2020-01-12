@@ -4,7 +4,8 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HistoryScreen from '../screens/HistoryScreen/HistoryScreen';
+import ResultsScreen from '../screens/ResultsScreen/ResultsScreen';
+// import HistoryScreen from '../screens/HistoryScreen/HistoryScreen';
 import CameraScreen from '../screens/CameraScreen/CameraScreen';
 import DictionaryScreen from '../screens/DictionaryScreen/DictionaryScreen';
 
@@ -13,31 +14,15 @@ const config = Platform.select({
   default: {},
 });
 
-const HistoryStack = createStackNavigator(
+const ResultsStack = createStackNavigator(
   {
-    Home: HistoryScreen,
+    Home: ResultsScreen,
   },
   config
 );
 
-HistoryStack.navigationOptions = {
-  tabBarLabel: 'History', // this is for the nav bar at the bottom
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-};
-
-HistoryStack.path = '';
-
-// ResultsStack.navigationOptions = {
-//   tabBarLabel: 'Results', // this is for the nav bar at the bottom
+// HistoryStack.navigationOptions = {
+//   tabBarLabel: 'History', // this is for the nav bar at the bottom
 //   tabBarIcon: ({ focused }) => (
 //     <TabBarIcon
 //       focused={focused}
@@ -50,7 +35,23 @@ HistoryStack.path = '';
 //   ),
 // };
 
-// ResultsStack.path = '';
+// HistoryStack.path = '';
+
+ResultsStack.navigationOptions = {
+  tabBarLabel: 'Results', // this is for the nav bar at the bottom
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
+ResultsStack.path = '';
 
 const LinksStack = createStackNavigator(
   {
@@ -85,7 +86,7 @@ DictionaryStack.navigationOptions = {
 DictionaryStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  HistoryStack,
+  ResultsStack,
   LinksStack,
   DictionaryStack,
 });
