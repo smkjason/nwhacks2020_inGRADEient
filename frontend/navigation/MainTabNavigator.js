@@ -4,24 +4,41 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import ResultsScreen from '../screens/ResultsScreen/ResultsScreen';
+// import HistoryScreen from '../screens/HistoryScreen/HistoryScreen';
+import CameraScreen from '../screens/CameraScreen/CameraScreen';
+import DictionaryScreen from '../screens/DictionaryScreen/DictionaryScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
   default: {},
 });
 
-const HomeStack = createStackNavigator(
+const ResultsStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Home: ResultsScreen,
   },
   config
 );
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+// HistoryStack.navigationOptions = {
+//   tabBarLabel: 'History', // this is for the nav bar at the bottom
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={
+//         Platform.OS === 'ios'
+//           ? `ios-information-circle${focused ? '' : '-outline'}`
+//           : 'md-information-circle'
+//       }
+//     />
+//   ),
+// };
+
+// HistoryStack.path = '';
+
+ResultsStack.navigationOptions = {
+  tabBarLabel: 'Results', // this is for the nav bar at the bottom
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -34,17 +51,17 @@ HomeStack.navigationOptions = {
   ),
 };
 
-HomeStack.path = '';
+ResultsStack.path = '';
 
 const LinksStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Links: CameraScreen,
   },
   config
 );
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+  tabBarLabel: 'Camera',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
   ),
@@ -52,26 +69,26 @@ LinksStack.navigationOptions = {
 
 LinksStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const DictionaryStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Settings: DictionaryScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+DictionaryStack.navigationOptions = {
+  tabBarLabel: 'Dictionary',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   ),
 };
 
-SettingsStack.path = '';
+DictionaryStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
+  ResultsStack,
   LinksStack,
-  SettingsStack,
+  DictionaryStack,
 });
 
 tabNavigator.path = '';
