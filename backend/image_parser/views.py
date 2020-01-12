@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import base64
 
+from . import image_processor
 # Create your views here.
 
 @csrf_exempt
@@ -14,6 +15,7 @@ def index(request):
 	filename='image_data.jpg'
 	with open(filename, 'wb') as f:
 		f.write(image_data)
-	return HttpResponse("Hello, world! I'm going to parse the image soon!")
+	output = process(filename)
+	return JsonResponse(output)
 
 # def parse(request):
