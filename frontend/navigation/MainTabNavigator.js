@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import CameraScreen from '../screens/CameraScreen/CameraScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import DictionaryScreen from '../screens/DictionaryScreen/DictionaryScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -52,26 +52,26 @@ LinksStack.navigationOptions = {
 
 LinksStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const DictionaryStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Settings: DictionaryScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
+DictionaryStack.navigationOptions = {
   tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   ),
 };
 
-SettingsStack.path = '';
+DictionaryStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   LinksStack,
-  SettingsStack,
+  DictionaryStack,
 });
 
 tabNavigator.path = '';
