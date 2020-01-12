@@ -4,7 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import ResultsScreen from '../screens/ResultsScreen/ResultsScreen';
 import CameraScreen from '../screens/CameraScreen/CameraScreen';
 import DictionaryScreen from '../screens/DictionaryScreen/DictionaryScreen';
 
@@ -13,15 +13,15 @@ const config = Platform.select({
   default: {},
 });
 
-const HomeStack = createStackNavigator(
+const ResultsStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Home: ResultsScreen,
   },
   config
 );
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+ResultsStack.navigationOptions = {
+  tabBarLabel: 'Results', // this is for the nav bar at the bottom
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -34,7 +34,7 @@ HomeStack.navigationOptions = {
   ),
 };
 
-HomeStack.path = '';
+ResultsStack.path = '';
 
 const LinksStack = createStackNavigator(
   {
@@ -69,7 +69,7 @@ DictionaryStack.navigationOptions = {
 DictionaryStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
+  ResultsStack,
   LinksStack,
   DictionaryStack,
 });
