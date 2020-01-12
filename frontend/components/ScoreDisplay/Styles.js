@@ -31,5 +31,5 @@ export default StyleSheet.create({
       fontSize: 24,
       fontWeight: 'bold',
       color: '#ffffff',
-  }
+    }
 });

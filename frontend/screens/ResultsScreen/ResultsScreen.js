@@ -2,25 +2,69 @@ import React, {Component} from 'react';
 import { Text, View } from 'react-native';
 import styles from './Styles';
 import ScoreDisplay from '../../components/ScoreDisplay/ScoreDisplay';
+import IngredientButtons from '../../components/IngredientButtons/IngredientButtons';
+import BadIngredientButtons from '../../components/IngredientButtons/BadIngredientButtons';
 
 // sample data
 const results = {
     "score": 56,
-    "chemicals": ["sulfate", "sodium", "phosphate", "nitrate"]
+    "ingredients": {
+        "good": [
+            "water",
+            "gooding1",
+            "gooding2"
+        ],
+        "bad": {
+            "sodium_sulfate": {
+                "desc": "asdf"
+            },
+            "bading1": {
+                "desc": "asdfasdf"
+            },
+            "bading2": {
+                "desc": "asdfasdfasdf"
+            },
+            "bading3": {
+                "desc": "asdfasdfasdfdf"
+            }, 
+        },
+        "unknown": [
+            "unk1",
+            "unknwn2",
+            "unknown3",
+            "unknownunknown4",
+            "unknown5",
+        ]
+    }
 }
 
 export default class ResultsScreen extends Component {
     render() {
         return (
-            <View>
+            <View style={styles.wrapper}>
                 <View style={styles.resultsHeader}>
                     <Text style={styles.resultsHeaderTitle}>Product Analysis</Text>
                     <ScoreDisplay score={results.score}/>
                 </View>
                 <Text style={styles.explanation}>This product contains
-                    <Text style={styles.explanationNumber}> { results.chemicals.length } </Text>
-                    ingredients from our list of harmful chemicals.</Text>
-                <Text style={styles.testText}>Chemicals</Text>
+                    <Text style={styles.explanationNumber}> { Object.keys(results.ingredients.bad).length } </Text>
+                items from our list of bad ingredients.</Text>
+                <View style={styles.category}>
+                    <Text style={styles.categoryHeader}>Bad Ingredients</Text>
+                    <View style={styles.categoryWrapper}>
+                    <BadIngredientButtons ingredients={results.ingredients.bad}/>
+                    </View>
+                </View>
+                <View style={styles.category}>
+                    <Text style={styles.categoryHeader}>Okay Ingredients</Text>
+                    <IngredientButtons labels={results.ingredients.good}/>
+                </View>
+                <View style={styles.category}>
+                    <Text style={styles.categoryHeader}>Unknown Ingredients</Text>
+                    <View style={styles.categoryWrapper}>
+                    <IngredientButtons labels={results.ingredients.unknown}/>
+                    </View>
+                </View>
             </View>
         );
     }
