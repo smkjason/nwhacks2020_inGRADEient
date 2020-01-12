@@ -1,17 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Text, View } from 'react-native';
 import styles from './Styles';
 
-export default function ScoreDisplay() {
-    let score = 56; // sample number
-    let level = 'moderate';
+export default class ScoreDisplay extends Component {
+    constructor(props) {
+        super(props);
+    }
 
-    return (
-        <View style={styles.component}>
-            <View style={styles.score}>
-                <Text style={styles.scoreText}>{ score }</Text>
+    render() {
+        let score = this.props.score;
+        let level = 'moderate';
+
+        return (
+            <View style={styles.component}>
+                <View style={styles.score}>
+                    <Text style={styles.scoreText}>{ score }</Text>
+                </View>
+                <Text style={styles.level}>{ level }</Text>
             </View>
-            <Text style={styles.level}>{ level }</Text>
-        </View>
-  );
+        );
+    }
 }

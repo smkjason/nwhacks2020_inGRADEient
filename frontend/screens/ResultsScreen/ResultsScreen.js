@@ -1,32 +1,31 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Text, View } from 'react-native';
 import styles from './Styles';
 import ScoreDisplay from '../../components/ScoreDisplay/ScoreDisplay';
 
-export default function ResultsScreen() {
-    let score = 56; // sample number
-    let sampleText = getText();
-    let chemCount = 5;
-    return (
-        <View>
-            <View style={styles.resultsHeader}>
-                <Text style={styles.resultsHeaderTitle}>Product Analysis</Text>
-                <ScoreDisplay />
-            </View>
-            <Text style={styles.explanation}>This product contains
-                <Text style={styles.explanationNumber}> { chemCount } </Text>
-                ingredients from our list of harmful chemicals.</Text>
-            <Text style={styles.testText}>Chemicals</Text>
-        </View>
-    );
+// sample data
+const results = {
+    "score": 56,
+    "chemicals": ["sulfate", "sodium", "phosphate", "nitrate"]
 }
 
-// sample function
-function getText() {
-    return "Results Screen";
+export default class ResultsScreen extends Component {
+    render() {
+        return (
+            <View>
+                <View style={styles.resultsHeader}>
+                    <Text style={styles.resultsHeaderTitle}>Product Analysis</Text>
+                    <ScoreDisplay score={results.score}/>
+                </View>
+                <Text style={styles.explanation}>This product contains
+                    <Text style={styles.explanationNumber}> { results.chemicals.length } </Text>
+                    ingredients from our list of harmful chemicals.</Text>
+                <Text style={styles.testText}>Chemicals</Text>
+            </View>
+        );
+    }
 }
 
 ResultsScreen.navigationOptions = {
-    title: 'Results',
-};
-
+    title: 'Results'
+}
