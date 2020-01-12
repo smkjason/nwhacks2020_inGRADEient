@@ -15,16 +15,28 @@ export default StyleSheet.create({
     },
 
     score: {
-        // red: #ff3b3b
-        // orange: #ff8800
-        // yellow: #fff34a
-        // green: #7af056
-        backgroundColor: '#ff8800',
+        backgroundColor: '#a5d7f0',
         width: 70,
         height: 70,
         borderRadius: 35,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+
+    scoreGood: {
+      backgroundColor: '#66eb3d', // green
+    },
+
+    scoreModerate: {
+      backgroundColor: '#ffe103', // yellow
+    },
+
+    scoreEhhh: {
+      backgroundColor: '#ff8800', // orange
+    },
+
+    scoreHarmful: {
+      backgroundColor: '#ff3b3b', // red
     },
 
     scoreText: {

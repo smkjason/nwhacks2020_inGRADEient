@@ -6,7 +6,7 @@ import IngredientButtons from '../../components/IngredientButtons/IngredientButt
 
 // sample data
 const results = {
-    "score": 56,
+    "score": 1,
     "ingredients": {
         "good": [
             "water",

@@ -17,13 +17,13 @@ export default StyleSheet.create({
     },
 
     badIngredientButton: {
-        backgroundColor: '#ffb8b8',
+        backgroundColor: '#ffa6a6',
         borderColor: '#ff3b3b',
     },
 
     goodIngredientButton: {
-        backgroundColor: '#dcf5d5',
-        borderColor: '#7af056',
+        backgroundColor: '#c2fab1',
+        borderColor: '#66eb3d',
     },
 
     ingredientButtonText: {
