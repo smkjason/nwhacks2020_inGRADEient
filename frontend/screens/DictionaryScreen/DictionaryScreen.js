@@ -82,7 +82,7 @@ export default class DictionaryScreen extends Component {
           onSearchBarTextChange={this.searchBarTextChangeHandler}
         />
         <FlatList
-          style={styles.listContainer}
+          style={styles.listContainer} 
           data={this.state.isSearching ? this.state.selectedData : this.state.data}
           renderItem={this.renderItem}
           extraData={this.state.chosenForDetail}
