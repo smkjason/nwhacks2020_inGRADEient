@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, AsyncStorage } from "react-native";
+import { View, Text, TouchableOpacity, AsyncStorage, Alert } from "react-native";
 import { Camera } from "expo-camera";
 import { NavigationEvents } from "react-navigation";
+import axios from 'axios';
+import * as FileSystem from 'expo-file-system';
 
+import { BASE_URL } from '../../Constants';
 import styles from "./CameraStyles";
 import Toolbar from "./ToolbarCamera";
 
@@ -26,11 +29,38 @@ export default function CameraPage() {
     console.log("I am now handling short capture.");
     const photoData = await this.camera.takePictureAsync();
     setCaptures([photoData, ...captures]);
-    try {
-      await AsyncStorage.setItem(key.toString(), photoData.toString());
-    } catch (error) {
-      console.log("There was an AsyncStorage error: " + error);
-    }
+    // try {
+    //   await AsyncStorage.setItem(key.toString(), photoData.toString());
+
+    // } catch (error) {
+    //   Alert.alert("Please retry taking a picture!");
+    // }
+
+    AsyncStorage.setItem(key.toString(), photoData.toString())
+      .then(() => {
+        return FileSystem.readAsStringAsync(photoData.uri, { encoding: 'base64' })
+      })
+      .then(base64Image => {
+        let formData = new FormData();
+        formData.append("image", base64Image);
+        console.log(formData)
+        return axios.post(BASE_URL + '/image_parser/', formData, {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'multipart/form-data/'
+          }
+        })
+        // return axios.get(BASE_URL + '/image_parser')
+        // return fetch(BASE_URL + '/image_parser/',)
+      })
+      .then(res => {
+        Alert.alert(res.data)
+      })
+      .catch(error => {
+        Alert.alert("Please retry taking a picture!");
+        console.log(error);
+      })
+
     console.log("The key used to store picture: " + key);
     console.log(photoData);
     setKey(key + 1);
