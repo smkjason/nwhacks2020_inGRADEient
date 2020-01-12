@@ -12,9 +12,6 @@ export default ({
   flashMode = Camera.Constants.FlashMode.off,
   setFlash,
   setCamera,
-  onCaptureIn,
-  onCaptureOut,
-  onLongCapture,
   onShortCapture
 }) => (
   <Grid style={styles.bottomToolbar}>

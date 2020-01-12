@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, AsyncStorage } from "react-native";
 import { Camera } from "expo-camera";
+import { NavigationEvents } from "react-navigation";
 
 import styles from "./CameraStyles";
 import Toolbar from "./ToolbarCamera";
@@ -8,10 +9,10 @@ import Toolbar from "./ToolbarCamera";
 export default function CameraPage() {
   const [hasPermission, setHasPermission] = useState(false);
   const [key, setKey] = useState(0);
-  const [type, setType] = useState(Camera.Constants.Type.back);
   const [captures, setCaptures] = useState([]);
   const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.off);
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
+  const [loaded, setLoaded] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -31,7 +32,7 @@ export default function CameraPage() {
       console.log("There was an AsyncStorage error: " + error);
     }
     console.log("The key used to store picture: " + key);
-    console.log("The picture: " + photoData);
+    console.log(photoData);
     setKey(key + 1);
   };
 
@@ -52,6 +53,21 @@ export default function CameraPage() {
     );
   }
 
+  if (loaded === false) {
+    return (
+      <NavigationEvents
+        onWillFocus={payload => {
+          //console.log("will focus", payload);
+          setLoaded(true);
+        }}
+        onDidBlur={payload => {
+          //console.log('did leave',payload)
+          setLoaded(false);
+        }}
+      />
+    );
+  }
+
   return (
     <View style={{ flex: 1 }}>
       <Camera
@@ -60,6 +76,10 @@ export default function CameraPage() {
         type={cameraType}
         ref={ref => (this.camera = ref)}
       >
+        <NavigationEvents
+          onWillFocus={payload => setLoaded(true)}
+          onDidBlur={payload => setLoaded(false)}
+        />
         <View
           style={{
             flex: 1,
@@ -72,13 +92,6 @@ export default function CameraPage() {
               flex: 0.1,
               alignSelf: "flex-end",
               alignItems: "center"
-            }}
-            onPress={() => {
-              // setType(
-              //   type === Camera.Constants.Type.back
-              //     ? Camera.Constants.Type.front
-              //     : Camera.Constants.Type.back
-              // );
             }}
           ></TouchableOpacity>
         </View>
