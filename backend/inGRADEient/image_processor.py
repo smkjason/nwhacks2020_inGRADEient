@@ -171,5 +171,3 @@ def process(path):
     # print(bad_ingredients)
     # print(rest_ingredients)
     return bad_ingredients, rest_ingredients
-
-process('datasets/label_0.png')
