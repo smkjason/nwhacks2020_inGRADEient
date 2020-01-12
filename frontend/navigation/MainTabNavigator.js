@@ -5,8 +5,8 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
 import ResultsScreen from '../screens/ResultsScreen/ResultsScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import CameraScreen from '../screens/CameraScreen/CameraScreen';
+import DictionaryScreen from '../screens/DictionaryScreen/DictionaryScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -38,7 +38,7 @@ ResultsStack.path = '';
 
 const LinksStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Links: CameraScreen,
   },
   config
 );
@@ -52,26 +52,26 @@ LinksStack.navigationOptions = {
 
 LinksStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const DictionaryStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Settings: DictionaryScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
+DictionaryStack.navigationOptions = {
   tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   ),
 };
 
-SettingsStack.path = '';
+DictionaryStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   ResultsStack,
   LinksStack,
-  SettingsStack,
+  DictionaryStack,
 });
 
 tabNavigator.path = '';
