@@ -5,12 +5,18 @@ import {
   View,
 } from 'react-native';
 import styles from './Styles';
+import ScoreDisplay from '../../components/ScoreDisplay/ScoreDisplay';
 
 export default function ResultsScreen() {
-  let sampleText = getText();
-  return (
-    <View>
-      <Text style={styles.testText}>{ sampleText }</Text>
+    let score = 56; // sample number
+    let sampleText = getText();
+    return (
+        <View>
+            <View style={styles.resultsHeader}>
+                <Text style={styles.resultsHeaderTitle}>Product Analysis</Text>
+                <ScoreDisplay />
+            </View>
+        <Text style={styles.testText}>{ sampleText }</Text>
     </View>
   );
 }
