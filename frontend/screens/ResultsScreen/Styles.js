@@ -8,7 +8,7 @@ export default StyleSheet.create({
 
     resultsHeader: {
         flexDirection: 'row',
-        padding: 4,
+        padding: 8,
         alignItems: 'center',
         justifyContent: 'space-between',
     },

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Text, View, TouchableHighlight, Alert } from 'react-native';
 import styles from './Styles';
+import { formatLabelName } from '../../Util';
 
 export default class IngredientButtons extends Component {
     constructor(props) {
@@ -10,15 +11,6 @@ export default class IngredientButtons extends Component {
     onPressLabel(labelName) {
         const description = this.props.labels[labelName]["desc"];
         Alert.alert(description);
-    }
-
-    formatLabelName(label) {
-        let words = label.split("_");
-        let formatted = "";
-        for (let i = 0; i < words.length; i++) {
-            formatted = formatted + " " + words[i].charAt(0).toUpperCase() + words[i].slice(1);
-        }
-        return formatted.slice(1);
     }
 
     render() {
@@ -34,7 +26,7 @@ export default class IngredientButtons extends Component {
                         underlayColor={'#ffcccc'}
                         style={[styles.ingredientButton, styles.badIngredientButton]}
                     >
-                        <Text style={styles.ingredientButtonText}>{ this.formatLabelName(labelName) }</Text>
+                        <Text style={styles.ingredientButtonText}>{ formatLabelName(labelName) }</Text>
                     </TouchableHighlight>
                 );
             }
@@ -47,7 +39,7 @@ export default class IngredientButtons extends Component {
             for (let i = 0; i < labels.length; i++) {
                 buttons.push(
                     <View style={styleList}>
-                        <Text style={styles.ingredientButtonText}>{ this.formatLabelName(labels[i]) }</Text>
+                        <Text style={styles.ingredientButtonText}>{ formatLabelName(labels[i]) }</Text>
                     </View>
                 );
             }
