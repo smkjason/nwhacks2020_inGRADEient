@@ -4,7 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
-import ResultsScreen from '../screens/ResultsScreen/ResultsScreen';
+import HistoryScreen from '../screens/HistoryScreen/HistoryScreen';
 import CameraScreen from '../screens/CameraScreen/CameraScreen';
 import DictionaryScreen from '../screens/DictionaryScreen/DictionaryScreen';
 
@@ -13,15 +13,15 @@ const config = Platform.select({
   default: {},
 });
 
-const ResultsStack = createStackNavigator(
+const HistoryStack = createStackNavigator(
   {
-    Home: ResultsScreen,
+    Home: HistoryScreen,
   },
   config
 );
 
-ResultsStack.navigationOptions = {
-  tabBarLabel: 'Results', // this is for the nav bar at the bottom
+HistoryStack.navigationOptions = {
+  tabBarLabel: 'History', // this is for the nav bar at the bottom
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -34,7 +34,23 @@ ResultsStack.navigationOptions = {
   ),
 };
 
-ResultsStack.path = '';
+HistoryStack.path = '';
+
+// ResultsStack.navigationOptions = {
+//   tabBarLabel: 'Results', // this is for the nav bar at the bottom
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={
+//         Platform.OS === 'ios'
+//           ? `ios-information-circle${focused ? '' : '-outline'}`
+//           : 'md-information-circle'
+//       }
+//     />
+//   ),
+// };
+
+// ResultsStack.path = '';
 
 const LinksStack = createStackNavigator(
   {
@@ -69,7 +85,7 @@ DictionaryStack.navigationOptions = {
 DictionaryStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  ResultsStack,
+  HistoryStack,
   LinksStack,
   DictionaryStack,
 });
