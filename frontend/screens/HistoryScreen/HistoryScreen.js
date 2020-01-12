@@ -10,8 +10,6 @@ import {
 import styles from "./Styles";
 
 import Card from "../../components/Card/Card";
-import { SafeAreaView } from "react-navigation";
-import { FlatList } from "react-native-gesture-handler";
 import ListItem from "../../components/ListItem/ListItem";
 
 export default class HistoryScreen extends Component {
