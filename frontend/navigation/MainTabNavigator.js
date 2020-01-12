@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import CameraScreen from '../screens/CameraScreen/CameraScreen';
 import DictionaryScreen from '../screens/DictionaryScreen/DictionaryScreen';
 
 const config = Platform.select({
@@ -38,7 +38,7 @@ HomeStack.path = '';
 
 const LinksStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Links: CameraScreen,
   },
   config
 );
