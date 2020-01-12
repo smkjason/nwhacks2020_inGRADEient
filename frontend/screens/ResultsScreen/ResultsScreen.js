@@ -3,7 +3,6 @@ import { Text, View } from 'react-native';
 import styles from './Styles';
 import ScoreDisplay from '../../components/ScoreDisplay/ScoreDisplay';
 import IngredientButtons from '../../components/IngredientButtons/IngredientButtons';
-import BadIngredientButtons from '../../components/IngredientButtons/BadIngredientButtons';
 
 // sample data
 const results = {
@@ -52,17 +51,17 @@ export default class ResultsScreen extends Component {
                 <View style={styles.category}>
                     <Text style={styles.categoryHeader}>Bad Ingredients</Text>
                     <View style={styles.categoryWrapper}>
-                    <BadIngredientButtons ingredients={results.ingredients.bad}/>
+                    <IngredientButtons type="bad" labels={results.ingredients.bad}/>
                     </View>
                 </View>
                 <View style={styles.category}>
                     <Text style={styles.categoryHeader}>Okay Ingredients</Text>
-                    <IngredientButtons labels={results.ingredients.good}/>
+                    <IngredientButtons type="good" labels={results.ingredients.good}/>
                 </View>
                 <View style={styles.category}>
                     <Text style={styles.categoryHeader}>Unknown Ingredients</Text>
                     <View style={styles.categoryWrapper}>
-                    <IngredientButtons labels={results.ingredients.unknown}/>
+                    <IngredientButtons type="unknown" labels={results.ingredients.unknown}/>
                     </View>
                 </View>
             </View>

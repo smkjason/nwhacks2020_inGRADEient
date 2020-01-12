@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, TouchableHighlight, Alert } from 'react-native';
 import styles from './Styles';
 
 export default class IngredientButtons extends Component {
@@ -7,15 +7,50 @@ export default class IngredientButtons extends Component {
         super(props);
     }
 
+    onPressLabel(labelName) {
+        const description = this.props.labels[labelName]["desc"];
+        Alert.alert(description);
+    }
+
+    formatLabelName(label) {
+        let words = label.split("_");
+        let formatted = "";
+        for (let i = 0; i < words.length; i++) {
+            formatted = formatted + " " + words[i].charAt(0).toUpperCase() + words[i].slice(1);
+        }
+        return formatted.slice(1);
+    }
+
     render() {
         let buttons = [];
-        const labels = this.props.labels;
-        for (let i = 0; i < labels.length; i++) {
-            buttons.push(
-                <View style={styles.ingredientButton}>
-                    <Text style={styles.ingredientButtonText}>{ labels[i] }</Text>
-                </View>
-            );
+        const type = this.props.type;   // type = good, bad, unknown
+        if (type === 'bad') {
+            const labels = Object.keys(this.props.labels);
+            for (let i = 0; i < labels.length; i++) {
+                const labelName = labels[i];
+                buttons.push(
+                    <TouchableHighlight
+                        onPress={() => this.onPressLabel(labelName)}
+                        underlayColor={'#ffcccc'}
+                        style={[styles.ingredientButton, styles.badIngredientButton]}
+                    >
+                        <Text style={styles.ingredientButtonText}>{ this.formatLabelName(labelName) }</Text>
+                    </TouchableHighlight>
+                );
+            }
+        } else {
+            const labels = this.props.labels;
+            const styleList = [styles.ingredientButton];
+            if (type === 'good') {
+                styleList.push(styles.goodIngredientButton);
+            }
+            for (let i = 0; i < labels.length; i++) {
+                buttons.push(
+                    <View style={styleList}>
+                        <Text style={styles.ingredientButtonText}>{ this.formatLabelName(labels[i]) }</Text>
+                    </View>
+                );
+            }
         }
         return (
             <View style={styles.container}>

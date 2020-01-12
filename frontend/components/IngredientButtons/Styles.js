@@ -7,13 +7,23 @@ export default StyleSheet.create({
     },
 
     ingredientButton: {
-        backgroundColor: '#e6f0f5',
+        backgroundColor: '#d2eefc',
         padding: 6,
         marginBottom: 6,
         marginRight: 6,
         borderRadius: 6,
         borderWidth: 1,
-        borderColor: '#c3dde8',
+        borderColor: '#a5d7f0',
+    },
+
+    badIngredientButton: {
+        backgroundColor: '#ffb8b8',
+        borderColor: '#ff3b3b',
+    },
+
+    goodIngredientButton: {
+        backgroundColor: '#dcf5d5',
+        borderColor: '#7af056',
     },
 
     ingredientButtonText: {
