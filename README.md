@@ -1,4 +1,4 @@
-# nwhacks2020_inGRADEient
+# nwhacks2020_inGRADEient (unfinished)
 
 Mobile Application built with React Native (Expo) on the frontend and Django on the backend. @nwHacks
 
@@ -18,6 +18,7 @@ And then SCAN the QR Code.
 Take a picture of ingredients on the back of the product to see which ingredients are good and bad for you and which ingredients are enviromentally friendly.
 
 ## Screens
+
 Take a picture
 
 <img src="Screenshot_20200116-160935_Expo.jpg" width="300" height="500">
@@ -30,8 +31,7 @@ Search for certain ingredients if your camera functionality doesn't work!
 
 <img src="Screenshot_20200116-160948_Expo.jpg" width="300" height="500">
 
-
-## Challenges
+## Challenges & Why we couldn't finish it
 
 Implemented OCR Google Cloud API to read texts on the picture. It was difficult for the app to recognize which part of the text was actually the ingredient as the ingredient 'box' came in different sizes, there were always other words that came with the picture.
 
