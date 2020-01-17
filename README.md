@@ -19,9 +19,17 @@ Take a picture of ingredients on the back of the product to see which ingredient
 
 ## Screens
 Take a picture
+
 <img src="Screenshot_20200116-160935_Expo.jpg" width="300" height="500">
-<img src="Screenshot_20200116-160948_Expo.jpg" width="300" height="500">
+
+See the results
+
 <img src="Screenshot_20200116-160910_Expo.jpg" width="300" height="500">
+
+Search for certain ingredients if your camera functionality doesn't work!
+
+<img src="Screenshot_20200116-160948_Expo.jpg" width="300" height="500">
+
 
 ## Challenges
 
