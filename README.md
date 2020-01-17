@@ -18,6 +18,9 @@ And then SCAN the QR Code.
 Take a picture of ingredients on the back of the product to see which ingredients are good and bad for you and which ingredients are enviromentally friendly.
 
 ## Screens
+Take a Picture
+
+![](Screenshot_20200116-160910_Expo.jpg)
 
 ## Challenges
 
