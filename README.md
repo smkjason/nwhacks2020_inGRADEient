@@ -20,7 +20,7 @@ Take a picture of ingredients on the back of the product to see which ingredient
 ## Screens
 Take a Picture
 
-![](Screenshot_20200116-160910_Expo.jpg){:height="700px" width="400px"}
+![](Screenshot_20200116-160910_Expo.jpg){:height="500px" width="300px"}
 
 ## Challenges
 
